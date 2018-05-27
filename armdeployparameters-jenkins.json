@@ -1,0 +1,48 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "virtualNetworkName": {
+      "value": "vnet-jenkins"
+    },
+    "virtualNetworkAddressPrefix": {
+      "value": "172.10.0.0/21"
+    },
+    "subnetName": {
+      "value": "private"
+    },
+    "subnetAddressPrefix": {
+      "value": "172.10.1.0/24"
+    },
+    "loadBalancerName": {
+      "value": "jenkins"
+    },
+    "vmscalesetName": {
+      "value": "jenkins"
+    },
+    "availabilitySetName": {
+      "value": "availabilityset"
+    },
+    "adminUsername": {
+      "value": "rigaadmin"
+    },
+    "adminPassword": {
+      "value": "rigaPassword123!"
+    },
+    "virtualMachineNamePrefix": {
+      "value": "riga"
+    },
+    "virtualMachineSize": {
+      "value": "Standard_D3"
+    },
+    "imageName": {
+      "value": "jenkins123"
+    },
+    "imageRG": {
+      "value": "rg-training-user1"
+    },
+    "dnsNameforLBIP": {
+      "value": "riga-jenkins"
+    }
+  }
+}
