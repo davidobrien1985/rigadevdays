@@ -1,0 +1,60 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storageAccountNameprefix": {
+      "type": "string"
+    },
+    "storageType": {
+      "type": "string",
+      "allowedValues": [
+        "Standard_LRS",
+        "Standard_ZRS",
+        "Standard_GRS"
+      ]
+    },
+    "tags": {
+      "type": "object",
+      "defaultValue": ""
+    }
+  },
+  "variables": {
+    "storageAccountName": "[take(concat(parameters('storageAccountNameprefix'), uniqueString(resourceGroup().location)),24)]"
+  },
+  "resources": [
+    {
+      "name": "[variables('storageAccountName')]",
+      "type": "Microsoft.Storage/storageAccounts",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "2017-10-01",
+      "sku": {
+        "name": "[parameters('storageType')]"
+      },
+      "properties":{
+        "encryption":{
+          "keySource": "Microsoft.Storage",
+          "services":{
+            "blob":{
+              "enabled": true
+            },
+            "file":{
+              "enabled": true
+            }
+          }
+        }
+      },
+      "tags": {
+        "application": "[parameters('tags').application]",
+        "owner": "[parameters('tags').owner]",
+        "environment": "[parameters('tags').environment]",
+        "costcentre": "[parameters('tags').costcentre]"
+      }
+    }
+  ],
+  "outputs": {
+    "storageAccount": {
+      "type": "object",
+      "value": "[reference(variables('storageAccountName'))]"
+    }
+  }
+}
