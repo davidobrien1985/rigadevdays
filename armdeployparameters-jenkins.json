@@ -36,7 +36,7 @@
       "value": "Standard_D3"
     },
     "imageName": {
-      "value": "jenkins123"
+      "value": "jenkins"
     },
     "imageRG": {
       "value": "rg-training-user1"
