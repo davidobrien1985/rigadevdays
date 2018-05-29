@@ -8,7 +8,7 @@
     This file has been created as an example of using Pester to validate the deployed environment
 #>
 
-$endpointUrl = "globo-jenkins$($env:Release_EnvironmentName).australiasoutheast.cloudapp.azure.com"
+$endpointUrl = "riga-jenkins$($env:Release_EnvironmentName).europewest.cloudapp.azure.com"
 
 Describe "Test Deployed ARM template" {
 
